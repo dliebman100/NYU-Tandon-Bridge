@@ -1,16 +1,14 @@
 NYU Tandon Bridge to CS (24-Weeks Winter 2021)
 
-![NYU Tandon School of Engineering Logo]()
+![NYU Tandon School of Engineering Logo]( )
 
 Program official website - [NYU Tandon Bridge](https://engineering.nyu.edu/academics/programs/nyu-tandon-bridge)
 
 ## Program Description
 
-`The bridge program is an intensive study of the required topics which are requisite information for general admission into the NYU-Tandon CSE graduate program. Conventionally, coveringthese topics take three to four semesters to complete and must be done sequentially. Under the bridge program, you will complete your studies in one, intensive, semester which includes all of
-the material from the conventional courses in a more compact form. The bridge will require as much as 100 hours of study, but scheduling of each module can be done at a time of your discretion, due to the online nature of the program. Working at an average of about 30 hours of study each week, the bridge program will be completed in one semester. You are expected, and
-required to attend a weekly online meeting as well.`
+`The bridge program is an intensive study of the required topics which are requisite information for general admission into the NYU-Tandon CSE graduate program. Conventionally, coveringthese topics take three to four semesters to complete and must be done sequentially. Under the bridge program, you will complete your studies in one, intensive, semester which includes all of the material from the conventional courses in a more compact form. The bridge will require as much as 100 hours of study, but scheduling of each module can be done at a time of your discretion, due to the online nature of the program. Working at an average of about 30 hours of study each week, the bridge program will be completed in one semester. You are expected, and required to attend a weekly online meeting as well.`
 
-## Topics Covered in the Program:
+## Tentative List of Topics Covered in the Program:
 
 * Fundamentals of system hardware
 * Number Systems
