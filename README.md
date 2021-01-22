@@ -1,6 +1,6 @@
 NYU Tandon Bridge to CS (24-Weeks Winter 2021)
 
-![NYU Tandon School of Engineering Logo](nyu_logo.jpg)
+![NYU Tandon School of Engineering Logo]()
 
 Program official website - [NYU Tandon Bridge](https://engineering.nyu.edu/academics/programs/nyu-tandon-bridge)
 
