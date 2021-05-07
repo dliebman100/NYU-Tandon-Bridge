@@ -1,0 +1,47 @@
+/*
+**Implement a function:
+void printDivisors(int num)
+This function is given a positive integer num, and prints all of nums divisors in an ASCENDING order, SEPARATED by a space.
+
+**Ex:
+printDivisors(100) output is:
+1 2 4 5 10 20 25 50 100
+
+Implementation requirement: pay attention to the running time of the function. Efficient implementation would run in Theta(sqrt num).
+
+**Use the function when implementing a program that reads from the user a positive integer (>=2) and prints all it's divisors.
+
+Should look like this:
+Please enter a positive integer >=2: 100
+1 2 4 5 10 20 25 50 100
+*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void printDivisors(int num);
+
+int main() {
+	int userInput;
+
+	cout << "Please enter a positive integer >=2: ";
+	cin >> userInput;
+
+	printDivisors(userInput);
+
+	return 0;
+}
+void printDivisors(int num) {
+	int counter, divisor;
+
+	for (counter = 1; counter <= sqrt(num); counter++) {
+		if (num % counter == 0) {
+			cout << counter << " ";
+		}
+	}
+	for (divisor = sqrt(num); divisor >= 1; divisor--) {
+		if (num % divisor == 0) {
+			cout << num / divisor << ' ';
+		}
+	}
+}
