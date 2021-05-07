@@ -1,0 +1,67 @@
+/*
+Write a program that reads from the user a decimal numberber and prints it's representation in the romannumbers numbereral system.
+romannumbers numbereral system digits are:
+I = 1
+V = 5
+X = 10
+L = 50
+C = 100
+D = 500
+M = 1000
+
+Rules:
+* value of each digit is <= value of the digit that came before it.
+* There is no limit on the number of times that "M" can appear in the numberber
+* "D", "L", "V" can each appear only 1x in the number
+* "C", "X", "I" can each appear at most 4x in the number
+
+Program should interact with the user like this:
+Enter decimal number:
+147
+147 is CXXXXVII
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	int number, userInput;
+	string romanNums;
+
+	cout << "Enter decimal number: " << endl;
+	cin >> number;
+
+	userInput = number;
+	romanNums = "";
+
+	while (number > 0) {
+		if (number >= 1000) {
+			number -= 1000;
+			romanNums += "M";
+		} else if (number >= 500) {
+			number -= 500;
+			romanNums += "D";
+		} else if (number >= 100) {
+			number -= 100;
+			romanNums += "C";
+		} else if (number >= 50) {
+			number -= 50;
+			romanNums += "L";
+		} else if (number >= 10) {
+			number -= 10;
+			romanNums += "X";
+		} else if (number >= 5) {
+			number -= 5;
+			romanNums += "V";
+		} else if (number >= 1) {
+			number -= 1;
+			romanNums += "I";
+		}
+	}
+	if (userInput == 0) {
+		cout << userInput << "Number entered is 0" << endl;
+	} else {
+		cout << userInput << " is " << romanNums << endl;
+	}
+	return 0;
+}
