@@ -1,0 +1,73 @@
+/*
+Write 2 versions of a program that reads a sequence of positive integers from the user, calculates their geometric mean and prints the geometric mean.
+
+Notes:
+* Geometric mean of 2, 9, 12, is = to 6(\sqrt[3]{2 * 9 * 12} = 6)
+* In order to calculate the n-th root of a num, you should call pow function in <cmath>
+
+Version A:
+*Execution will look like...
+Please enter the length of the sequence: 3
+Please enter your sequence:
+1
+2
+3
+The geometric mean is: 1.8171
+
+Version B:
+* Keep reading nums until -1 is entered. Execution will look like...
+Please enter a non-empty sequence of positive integers, each one in a separate line. End your sequence by typing -1:
+1
+2
+3
+-1
+The geomtric mean is 1.8171
+
+*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	int seqLength;
+	double mean = 1, num, geoMeanA;
+
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(4);
+
+	cout << "section a\n" << endl;
+
+	cout << "Please enter the length of the sequence: ";
+	cin >> seqLength;
+	cout << "Please enter your sequence:" << endl;
+
+	for (int i = 0; i < seqLength; i++) {
+		cin >> num;
+		mean *= num;
+	}
+	geoMeanA = pow(mean, (double)1 / seqLength);
+
+	cout << "The geometric mean is: " << geoMeanA << endl;
+
+	cout << "\nsection b\n" << endl;
+
+	int inputB = 0, counter = 0;
+	double meanB = 1, geoMeanB;
+
+	cout << "Please enter a non-empty sequence of positive integers, each one in a separate line. End your sequence by typing -1:" << endl;
+
+	while (inputB != -1) {
+		cin >> inputB;
+		if (inputB >= 0) {
+			meanB *= inputB;
+			counter++;
+		}
+	}
+	geoMeanB = pow(mean, (double)1 / counter);
+
+	cout << "The geometric mean is: " << geoMeanB << endl;
+
+	return 0;
+}
+
