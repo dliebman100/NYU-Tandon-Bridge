@@ -1,0 +1,75 @@
+/*
+Implement a number guessing game. The program should randomly choose an integer between 1 and 100 (inclusive) and have the user try to guess that number.
+
+**user can only guess 5 times
+** Before each guess: annouce how many guesses the user has left & update guessing number
+**If the user guesses correctly the program should announce that and say how many guesses they used
+**If the guesses wrong and you still have guesses, the program should tell the user if the number is bigger or smaller than number guessed
+**If the user didn't guess the number in 5 tries the program should reveal the number
+
+*/
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+using namespace std;
+
+int main() {
+	// int x1, x2, x3, x4;
+
+	// //seed for rand number generator
+	// srand (time(0));
+
+	// //4 random numbers
+	// x1 = rand();
+	// x2 = rand();
+	// x3 = rand() % 100;
+	// x4 = (rand() % 100) + 1;
+
+	// cout << x1 <<" "<< x2 <<" " << x3 <<" "<< x4 <<endl;
+	int lowerRange, upperRange;
+	int guess, guessLeft = 5, guessCount = 0;
+	bool flag = false;
+	int randomNum;
+
+	srand(time(0));
+	randomNum = rand() % 100 + 1;
+
+	lowerRange = 1;
+	upperRange = 100;
+
+	cout << "I thought of a number between 1 and 100! Try to guess it." << endl;
+
+	while (flag == false) {
+		cout << "Range: [" << lowerRange << ", " << upperRange << "], Number of guesses left: " << guessLeft << endl;
+		cout << "Your guess: ";
+		cin >> guess;
+		guessCount++;
+		guessLeft--;
+
+		if (guess == randomNum) {
+			cout << "Congrats! You guess my number in " << guessCount << " guesses." << endl;
+			flag = true;
+		}
+		else if (guessLeft == 0) {
+			cout << "Out of guesses! My number is " << randomNum << endl;
+			flag = true;
+		}
+		else if (guess < randomNum) {
+			cout << "Wrong! My number is bigger." << endl;
+			if (guess >= lowerRange) {
+				lowerRange = guess + 1;
+			}
+		}
+		else {
+			cout << "Wrong! My number is smaller." << endl;
+			if (guess <= upperRange) {
+				upperRange = guess - 1;
+			}
+		}
+	}
+
+
+	return 0;
+}
+
