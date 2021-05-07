@@ -1,0 +1,35 @@
+/*
+Write a program that reads a positive integer n from the user and prints out a nin multiplication table. The columns should be spaced by a tab.
+
+Program should interact like this:
+Please enter a positive integer:
+10
+1..10 //multiplication table
+...
+...
+...
+10..100
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int input, i, j, output;
+
+    cout << "Please enter a positive integer:\n";
+    cin >> input;
+
+    //line count = 1
+    //nested loops for rows
+    for (i = 1; i <= input; i++) {
+        //loop for rows...increment rows and columns <= input
+        for (j = 1; j <= input; j++) {
+            output = (j * i);
+            cout << output;
+            cout << "\t";
+        }
+        cout << endl;
+    }
+    return 0;
+}
