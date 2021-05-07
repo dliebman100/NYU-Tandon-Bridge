@@ -1,0 +1,51 @@
+/*
+Write a program that reads from the user a positive integer (in decimal representation), and prints its binary (base 2) representation.
+
+Program should interact with the user like this:
+Enter decimal number:
+76
+The binary representation of 76 is 1001100
+
+Rules:
+* no strings or cout functionalities to make the conversion
+* no use of arrays
+*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	int input, decimalNum, baseExp;
+	int remainingValue, binaryNum, remainder, factor;
+
+	cout << "Enter decimal number: " << endl;
+	cin >> input;
+
+	decimalNum = input;
+	baseExp = 0;
+	while (decimalNum > 0) {
+		decimalNum = decimalNum / 2;
+		baseExp++;
+	}
+	remainingValue = input;
+	binaryNum = 0;
+	remainder = 0;
+	factor = 1;
+	int i = 0;
+	while (i < baseExp) {
+		remainder = remainingValue % 2;
+		i++;
+		int j = 0;
+		while (j < i) {
+			factor = factor * 10;
+			j++;
+		}
+		binaryNum += remainder * factor;
+		remainingValue = remainingValue / 2;
+		factor = 1;
+	}
+	cout << "The binary representation of " << input << " is " << binaryNum << endl;
+
+	return 0;
+}
+
