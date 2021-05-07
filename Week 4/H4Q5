@@ -1,0 +1,44 @@
+/*
+Write a program that asks the user to input a positive integer n, and prints an image of an hourglass made of 2n lines with asterisks.
+
+Example n=4 should print:
+*******
+ *****
+  ***
+   *
+   *
+  ***
+ *****
+*******
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	int number;
+
+	cout << "Please enter a positive integer number:\n";
+	cin >> number;
+	//inverted triangle
+	//need to add blank spaces with asterisks from left side
+	for (int i = number; i > 0; i--) {
+		for (int j = number; i < j; j--)
+			cout << " ";
+		for (int j = 1; i > j; j++)
+			cout << "*";
+		for (int j = 0; i > j; j++)
+			cout << "*";
+		cout << endl;
+	}
+	//upright portion for triangle
+	for (int i = 1; i <= number; i++) {
+		for (int j = 1; j <= (number - i); j++)
+			cout << " ";
+		for (int j = 1; j <= (i * 2) - 1; j++)
+			cout << "*";
+		cout << endl;
+	}
+
+	return 0;
+}
