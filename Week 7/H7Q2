@@ -1,0 +1,65 @@
+/**
+a) Write a function: void analyzeDividors(int name, int& outCountDivs, int& outSumDivs)
+
+This function takes as an input a positive integer num (>= 2) and updates two output parameters with the numbers of num's proper divisors and their sum.
+
+b) use function a to implement function: bool isPerfect(int num)
+This function is given a positive integer num (>= 2) an determines if it is a perfect number or not.
+
+c) use function a && b to write a program that reads from the user a positive integer M (>= 2) and prints:
+**All the perfect nums between 2 and m
+**All pairs of amicable nums that are between 2 and M (both nums must be in the range)
+*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//FUNCTION (a) void analyzeDividors(int name, int& outCountDivs, int& outSumDivs)
+void analyzeDividors(int num, int& outCountDivs, int& outSumDivs);
+//FUNCTION (b) bool isPerfect(int num)
+bool isPerfect(int num);
+int main() {
+    int outCountDivs1, outSumDivs1, outCountDivs2, outSumDivs2, mInput;
+
+    cout << "Please enter positive integer >= 2: " << endl;
+    cin >> mInput;
+
+    for (int count = 2; count <= mInput; count++) {
+        outCountDivs1 = 0;
+        outSumDivs1 = 0;
+        outCountDivs2 = 0;
+        outSumDivs2 = 0;
+        analyzeDividors(count, outCountDivs1, outSumDivs1);
+        analyzeDividors(outSumDivs1, outCountDivs2, outSumDivs2);
+
+        if (isPerfect(count)) {
+            cout << count << " is a perfect number." << endl;
+        }
+        else if (count == outSumDivs2 && outSumDivs1 <= mInput) {
+            cout << count << " and " << outSumDivs1 << " make an amicable pair." << endl;
+        }
+    }
+    return 0;
+}
+// Function takes integer input num >= 2 and updates parametes with # of num's proper divisors and sum
+void analyzeDividors(int num, int& outCountDivs, int& outSumDivs) {
+    int sum = 0, divTotal = 0;
+
+    for (int count = 1; count <= sqrt(num); count++) {
+        if (num % count == 0) {
+            divTotal += 2;
+            sum += count + (num / count);
+        }
+    }
+    outCountDivs = (divTotal - 1);
+    outSumDivs = (sum - num);
+}
+
+// Function determines if positive integer >= 2 is perfect number or not
+bool isPerfect(int num) {
+    int outCountDivs = 0, outSumDivs = 0;
+
+    analyzeDividors(num, outCountDivs, outSumDivs);
+
+    return (num == outSumDivs);
+}
