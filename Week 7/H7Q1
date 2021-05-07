@@ -1,0 +1,97 @@
+/**
+a) Implement a function:int printMonthCalendar(int numOfDays, int startingDay)
+
+This function is given two parameters:
+**numOfDays - the number of days in the month
+**startingDay - a number 1-7 that represents the day in the week of the first day in that month (1 for Monday, 2 for Tuesday, 3 for Wednesday, etc.)
+
+Function should:
+Print a formatted monthly calendar of that month
+Return a number 1-7 that represents the day in the week of the last day in that month.
+
+b) Write a function that takes in a year as input and return true if the year is a leap year, return false otherwise.
+
+c) Implement a function: void printYearCalendar(int year, int startingDay)
+
+Function is given two parameters:
+year - an integer that represents a year
+startingDay - a number 1-7 that represents the day in the week of 1/1 in that year (1 for Monday, 2 for Tuesday, 3 for Wednesday, etc.)
+
+d) Write a program that interacts with the user and your function in (c)
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+//FUNCTION a) int printMonthCalendar(int numOfDays, int startingDay)
+int printMonthCalendar(int numOfDays, int startingDay);
+
+//FUNCTION b) bool isLeapYear(int year)
+bool isLeapYear(int year);
+
+//FUNCTION c) void printYearCalendar(int year, int startingDay)
+void printYearCalendar(int year, int startingDay);
+
+//INT MAIN that interacts with user
+int main() {
+	int yearInput, startingInput;
+
+	cout << "Please enter a positive integer for year and starting day: " << endl;
+	cin >> yearInput >> startingInput;
+
+	printYearCalendar(yearInput, startingInput);
+
+	return 0;
+}
+
+//prints a formatted monthly calendar of that month
+//returns a number 1-7 that represents the day in the week of the last day in that month.
+int printMonthCalendar(int numOfDays, int startingDay) {
+	int space, day, weekDateCount;
+	//print header line for calendar
+	cout << "Mon\tTues\tWed\tThr\tFri\tSat\tSun" << endl;
+	//print space before startingDay
+	for (space = 1; space < startingDay; space++) {
+		cout << " \t";
+	}
+	//print each day from 1 to numOfDays on calendar
+	weekDateCount = startingDay - 1;
+	for (day = 1; day <= numOfDays; day++) {
+		cout << day << " \t";
+	}
+	//when weekDateCount mod 7 is 0 print a new line
+	weekDateCount = (weekDateCount + 1) % 7;
+	if (!weekDateCount) {
+		cout << endl;
+	}
+	//when weekDateCount mod 7 is 0 return 7 for Sunday
+	if (!weekDateCount) {
+		return 7;
+	}
+	//return 1 to 6 for Mon to Sat
+	cout << endl;
+	return weekDateCount;
+}
+bool isLeapYear(int year) {
+	return 0;
+}
+void printYearCalendar(int year, int startingDay) {
+	string months[12] = {
+		"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+	};
+	int monthDuration[12] = {
+		31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+	};
+	//iterate thru 12 months on calendar
+	for (int monthNum = 0; monthNum <= 11; monthNum++) {
+		cout << months[monthNum] << " " << year << endl;
+		//if month is feb and year is leap year input 29 into printMonthCalendar
+		if ((isLeapYear(year)) && (monthNum == 1)) {
+			startingDay = (printMonthCalendar(29, startingDay) % 7) + 1;
+		}
+		else {
+			startingDay = (printMonthCalendar(monthDuration[monthNum], startingDay) % 7) + 1;
+		}
+		cout << endl;
+	}
+}
