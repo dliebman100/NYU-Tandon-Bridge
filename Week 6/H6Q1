@@ -1,0 +1,48 @@
+/*
+Write a function int fib(int n) that returns the nth element of the fibonacci sequence.
+
+Write a program that prompts the user to enter a positive integer userInput, and then prints the userInput's elements in the Fibonacci sequence.
+
+Program should look like this:
+Please enter a positive integer: 7
+13
+*/
+#include <iostream>
+using namespace std;
+
+int fib(int n);
+
+int main() {
+	int userInput;
+	int output;
+
+	cout << "Please enter a positive integer: ";
+	cin >> userInput;
+
+	output = fib(userInput);
+	cout << output << endl;
+
+	return 0;
+}
+
+//Need to call function fib to return output
+int fib(int n) {
+	int output, output1, output2;
+
+	output = 0;
+	output1 = 1;
+	output2 = 1;
+
+	if ((n == 1) || (n == 2)) {
+		return 1;
+	}
+	else {
+		//hand-trace loop to = sum of the two previous nums
+		for (int i = 3; i <= n; i++) {
+			output = output1 + output2;
+			output1 = output2;
+			output2 = output;
+		}
+	}
+	return output;
+}
