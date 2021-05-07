@@ -1,0 +1,51 @@
+/*
+Body mass index(BMI) is a number calculated from a person's weight & height using the formula: weight/height^2. Where weight is in kg and height is in meters.
+
+Write a program that prompts for weight (in pounds) and height (in inches) of a person, and prints the weight status of that person.
+
+Your program should	interact with	the	user exactly as	it shows	in the following example:
+//Please enter weight (in	pounds): 135
+//Please enter height (in	inches): 71
+//The	weight status is:	Normal
+
+Note:	1	pound	is 0.453592	kilograms	and	1	inch is	0.0254	meters.
+*/
+#include <iostream>
+#include <string>
+using namespace std;
+
+const double POUNDS_TO_KGS = 0.453592;
+const double INCHES_TO_METERS = 0.0254;
+
+int main() {
+	double weightInLbs, heightInches, bodyMassIndex;
+	double weightInKgs, heightMeters;
+	string weightStatus;
+
+	cout << "Please enter weight (in pounds): ";
+	cin >> weightInLbs;
+
+	cout << "Please enter height (in inches): ";
+	cin >> heightInches;
+
+	//formula for conversion table
+	weightInKgs = (weightInLbs * POUNDS_TO_KGS);
+	heightMeters = (heightInches * INCHES_TO_METERS);
+	bodyMassIndex = ((weightInKgs) / (heightMeters * heightMeters));
+
+	if (bodyMassIndex < 18.5) {
+		weightStatus = "Underweight";
+	}
+	else if ((bodyMassIndex >= 18.5) && (bodyMassIndex < 25)) {
+		weightStatus = "Normal";
+	}
+	else if ((bodyMassIndex >= 25) && (bodyMassIndex < 30)) {
+		weightStatus = "Overweight";
+	}
+	else {
+		weightStatus = "Obese";
+	}
+
+	cout << "The weight is: " << weightStatus << endl;
+	return 0;
+}
