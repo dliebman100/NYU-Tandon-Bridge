@@ -1,0 +1,49 @@
+/*
+Write a program that asks the user to input a positive integer n, and print all of the numbers from 1 to n that have more even digits than odd digits.
+
+Example, if n = 30 it should print:
+2
+4
+6
+8
+20
+22
+24
+26
+28
+
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int number, remainder;
+	int evensCount, oddsCount;
+	int originalNum;
+
+	cout << "Please enter a positive integer: " << endl;
+	cin >> number;
+
+	//initialize i to 1 and increment i
+	for (int i = 1; i <= number; i++) {
+		originalNum = i;
+		//check even and odd count
+		evensCount = 0;
+		oddsCount = 0;
+		//use while loop to keep track of remainder
+		while (originalNum > 0) {
+			remainder = originalNum % 10;
+			if (remainder % 2 == 0)
+				evensCount += 1;
+			else
+				oddsCount += 1;
+			originalNum = originalNum / 10;
+		}
+		//if even count is more than odd log i
+		if (evensCount > oddsCount)
+			cout << i << endl;
+	}
+
+	return 0;
+}
