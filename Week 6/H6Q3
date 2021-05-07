@@ -1,0 +1,38 @@
+/*
+Implement function:
+double eApprox(int n)
+
+This function is given a positive integer n, and returns an approximation of e calculated by the sum of the first (n+1) addends of the infinite sum above.
+
+Notes:
+**Pay attention to runtime of eApprox. An efficient implementation would run in Theta of (n)
+**Use variable of type double to store the values of the factorials since they'll be large
+*/
+#include <iostream>
+using namespace std;
+
+double eApprox(int n);
+
+//TEST CASE
+int main() {
+	cout.precision(30);
+
+	for (int n = 1; n <= 15; n++) {
+		cout << "n = " << n << '\t' << eApprox(n) << endl;
+	}
+	return 0;
+}
+//FUNCTION DEFINITION
+double eApprox(int n) {
+	double addend, result, factorial;
+
+	result = 1;
+	factorial = 1;
+
+	for (int counter = 1; counter <= n; counter++) {
+		factorial = factorial * counter;
+		addend = 1 / factorial;
+		result = result + addend;
+	}
+	return result;
+}
