@@ -1,0 +1,63 @@
+/*
+Write a program that prints a "pine tree" consisting of triangles of increasing sizes filled with a char ('*' or '+' or '$')
+
+Program should interact with the user to read the number of triangles in the tree and the character filling the tree
+
+Must include the following functions:
+**void printShiftedTriangle(int n, int m, char symbol)
+Prints and n-line triangle filled with symbol chars shifted m spaces from the left margin.
+
+**void printPineTree(int n, char symbol)
+Prints a sequence of n triangle of increasing sizes (smallest triangle is a 2 line triangle) which form the shape of a pine tree. The triangles are filled with the symbol char.
+
+*/
+#include <iostream>
+using namespace std;
+
+//FUNCTION DEFINITION
+void printShiftedTriangle(int n, int m, char symbol);
+void printPineTree(int n, char symbol);
+
+//INTERACTION WITH USER
+int main() {
+	int userInput;
+	char userSymbol;
+
+	cout << "Please enter the number of triangles: ";
+	cin >> userInput;
+
+	cout << "Please enter a corresponding character ('*' or '+' or '$'): ";
+	cin >> userSymbol;
+
+	printPineTree(userInput, userSymbol);
+
+	//TEST CASES
+	// printShiftedTriangle(3, 4, '+');
+	// printPineTree(3, '#');
+
+	return 0;
+}
+
+void printShiftedTriangle(int n, int m, char symbol) {
+	//use diamond nested loop example for n num of vertical rows
+	for (int i = 1; i <= n; i++) {
+		//print horizontal columns 
+		for (int j = 1; j <= m + n - i; j++)
+			cout << " ";
+		for (int k = 1; k <= 2 * i - 1; k++)
+			cout << symbol;
+		cout << endl;
+	}
+	// return;
+}
+
+void printPineTree(int n, char symbol) {
+	int output, indent;
+
+	for (int i = 1; i <= n; i++) {
+		output = i + 1;
+		indent = n - 1;
+		printShiftedTriangle(output, indent, symbol);
+	}
+}
+
