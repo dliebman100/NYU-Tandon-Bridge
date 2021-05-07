@@ -1,0 +1,73 @@
+/*
+Define the following constants:
+const int FLOOR_ROUND = 1;
+const int CEILING_ROUND = 2;
+const int ROUND = 3;
+
+Write a program that asks the user to enter a Real number, then it asks the user to enter the method by which they want to round that number (floor, ceiling or to the nearest integer). The program will then print the rounded result.
+
+Your program should interact with the user exactly as it shows in the following example:
+Please enter a Real number: 4.78
+Choose your rounding method:
+1. Floor round
+2. Ceiling round
+3. Round to the nearest whole number
+2
+5
+
+Use a switch statement and no cmath.
+*/
+
+#include <iostream>
+using namespace std;
+
+const int FLOOR_ROUND = 1;
+const int CEILING_ROUND = 2;
+const int ROUND = 3;
+
+int main() {
+    double realNum;
+    int roundMethod, roundVal;
+
+    cout << "Please enter a Real number: " << endl;
+    cin >> realNum;
+    cout << "Choose your rounding method:" << endl;
+    cout << "1. Floor round" << endl;
+    cout << "2. Ceiling round" << endl;
+    cout << "3. Round to the nearest whole number" << endl;
+    cin >> roundMethod;
+
+    //adjust for decimal placement
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(2);
+
+    //rounding inputs for floor, ceil, round
+    switch (roundMethod) {
+        //floor == drop decimal value and return only integer.
+    case FLOOR_ROUND:
+        roundVal = realNum - ((int)realNum & 1);
+        break;
+        //ceiling == returns num rounded up in hundreths place 
+    case CEILING_ROUND:
+        roundVal = ((int)realNum + 1);
+        break;
+        //round returns num rounded down in hundreths place
+    case ROUND:
+        if ((realNum - (int)realNum <= 0.50)) {
+            roundVal = realNum;
+        }
+        else {
+            roundVal = realNum + 1;
+        }
+        break;
+    default:
+    {
+        cout << "Please input a valid choice 1, 2, or 3" << endl;
+        return 1;
+    }
+    }
+    cout << roundVal << endl;
+
+    return 0;
+}
